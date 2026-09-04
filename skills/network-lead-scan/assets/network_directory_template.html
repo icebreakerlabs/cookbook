@@ -1,0 +1,179 @@
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F7F8FB; --surface:#FFFFFF; --surface-2:#FBFBFD;
+  --ink:#191C24; --muted:#666E82; --faint:#8A92A6;
+  --border:#E4E7EF; --border-strong:#D3D8E4;
+  --accent:#4B45D1; --conn:#5B6472; --conn-bg:#EEF0F4;
+  --both:#0E7C86; --both-bg:#E1F2F3;
+  --shadow:0 1px 2px rgba(20,22,35,.04),0 4px 16px rgba(20,22,35,.05);
+}
+:root:not([data-theme="light"]){ @media (prefers-color-scheme:dark){
+  --ground:#0E1016; --surface:#161922; --surface-2:#1B1F2A;
+  --ink:#E9EBF2; --muted:#9AA1B4; --faint:#727A90;
+  --border:#252A38; --border-strong:#333A4C;
+  --accent:#8A87FF; --conn:#98A0B2; --conn-bg:#222736;
+  --both:#4FD1C5; --both-bg:#123536;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --ground:#0E1016; --surface:#161922; --surface-2:#1B1F2A;
+  --ink:#E9EBF2; --muted:#9AA1B4; --faint:#727A90;
+  --border:#252A38; --border-strong:#333A4C;
+  --accent:#8A87FF; --conn:#98A0B2; --conn-bg:#222736;
+  --both:#4FD1C5; --both-bg:#123536;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 22px 80px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+.brand{display:flex;flex-direction:column;gap:5px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1{font-family:"Archivo",sans-serif;font-weight:700;font-size:30px;line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--muted);max-width:62ch}
+.tiles{display:flex;gap:10px;flex-wrap:wrap}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 15px;min-width:96px;box-shadow:var(--shadow)}
+.tile .num{font-family:"Archivo",sans-serif;font-weight:700;font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile .lbl{font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-top:1px}
+.controls{position:sticky;top:0;z-index:5;background:var(--ground);padding:12px 0;margin-bottom:6px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-bottom:1px solid var(--border)}
+.search{flex:1 1 280px;position:relative;min-width:220px}
+.search input{width:100%;padding:10px 12px 10px 34px;border:1px solid var(--border-strong);border-radius:10px;background:var(--surface);color:var(--ink);font-family:inherit;font-size:14px}
+.search input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--faint)}
+select{padding:9px 11px;border:1px solid var(--border-strong);border-radius:10px;background:var(--surface);color:var(--ink);font-family:inherit;font-size:13px;cursor:pointer}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin:2px 2px 12px;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;min-width:860px}
+thead th{position:sticky;top:0;background:var(--surface-2);text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:500;padding:11px 14px;border-bottom:1px solid var(--border-strong);white-space:nowrap;cursor:pointer;user-select:none}
+thead th.nosort{cursor:default}
+th .arrow{opacity:.4;margin-left:4px}
+th[aria-sort="ascending"] .arrow,th[aria-sort="descending"] .arrow{opacity:1;color:var(--accent)}
+tbody td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+.name{font-weight:600;font-size:14px}
+.name a{color:var(--ink);text-decoration:none}
+.name a:hover{color:var(--accent);text-decoration:underline}
+.bio{color:var(--faint);font-size:12px;margin-top:2px;max-width:34ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.role{max-width:30ch}
+.loc{color:var(--muted);white-space:nowrap}
+.schools{color:var(--muted);font-size:12.5px;max-width:26ch}
+.exp{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:999px;font-weight:500;white-space:nowrap}
+.chip.conn{background:var(--conn-bg);color:var(--conn)}
+.chip.both{background:var(--both-bg);color:var(--both)}
+.src{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
+.ext{color:var(--accent);text-decoration:none;font-weight:500;font-size:12.5px;white-space:nowrap}
+.ext:hover{text-decoration:underline}
+.more{display:block;margin:18px auto 0;padding:11px 22px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);border-radius:10px;font-family:inherit;font-size:13.5px;font-weight:500;cursor:pointer}
+.more:hover{border-color:var(--accent);color:var(--accent)}
+.empty{padding:48px;text-align:center;color:var(--muted)}
+.foot{margin-top:26px;color:var(--faint);font-size:12px;font-family:"IBM Plex Mono",monospace;line-height:1.7}
+@media (max-width:640px){h1{font-size:24px}.wrap{padding:18px 14px 60px}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="eyebrow">Icebreaker · network scan</span>
+      <h1>__TITLE__</h1>
+      <p class="sub">__SUBTITLE__</p>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </header>
+  <div class="controls">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      <input id="q" type="search" placeholder="Search name, title, company, school, location, bio…" autocomplete="off">
+    </div>
+    <select id="src" aria-label="Source"><option value="all">All sources</option><option value="linkedin">LinkedIn</option><option value="twitter">Twitter/X</option><option value="icebreaker">Icebreaker</option></select>
+    <select id="sort" aria-label="Sort"><option value="name">Sort: Name (A–Z)</option><option value="expnew">Sort: Newest career first</option><option value="expold">Sort: Most experienced first</option></select>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th data-k="n">Name <span class="arrow">↕</span></th>
+        <th data-k="t">Role / title <span class="arrow">↕</span></th>
+        <th data-k="loc">Location <span class="arrow">↕</span></th>
+        <th data-k="s">Schools <span class="arrow">↕</span></th>
+        <th data-k="fjy">Career start <span class="arrow">↕</span></th>
+        <th class="nosort">Tie</th>
+        <th class="nosort">Profile</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>No one matches those filters.</div>
+  </div>
+  <button class="more" id="more" hidden>Load more</button>
+  <p class="foot">__FOOTER__</p>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function(){
+  var DATA=JSON.parse(document.getElementById('data').textContent);
+  DATA.forEach(function(d){ d._blob=((d.n||'')+' '+(d.t||'')+' '+(d.b||'')+' '+(d.s||'')+' '+(d.loc||'')).toLowerCase(); });
+  var state={q:'',src:'all',sort:'name',shown:0,step:60,list:[]};
+  var $=function(s){return document.querySelector(s)};
+  var rowsEl=$('#rows'),moreEl=$('#more'),emptyEl=$('#empty');
+  var tiles=[['People',DATA.length],['LinkedIn',DATA.filter(function(d){return d.src==='linkedin'}).length],['Twitter/X',DATA.filter(function(d){return d.src==='twitter'}).length],['With history',DATA.filter(function(d){return d.fjy}).length]];
+  $('#tiles').innerHTML=tiles.map(function(t){return '<div class="tile"><div class="num">'+t[1].toLocaleString()+'</div><div class="lbl">'+t[0]+'</div></div>'}).join('');
+  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function cmp(a,b){return a<b?-1:a>b?1:0}
+  function apply(){
+    var q=state.q.trim().toLowerCase();
+    state.list=DATA.filter(function(d){
+      if(state.src!=='all'&&d.src!==state.src) return false;
+      if(q&&d._blob.indexOf(q)<0) return false; return true;
+    });
+    state.list.sort(function(a,b){
+      if(state.sort==='name') return cmp((a.n||'').toLowerCase(),(b.n||'').toLowerCase());
+      var ay=a.fjy||0,by=b.fjy||0;
+      if(state.sort==='expnew'){if(!ay)return 1;if(!by)return -1;return by-ay;}
+      if(state.sort==='expold'){if(!ay)return 1;if(!by)return -1;return ay-by;}
+      return 0;
+    });
+    state.shown=0;rowsEl.innerHTML='';render();
+    $('#count').textContent=state.list.length.toLocaleString()+' of '+DATA.length.toLocaleString()+' people'+(q?(' matching “'+state.q.trim()+'”'):'');
+    emptyEl.hidden=state.list.length>0;
+  }
+  function render(){
+    var slice=state.list.slice(state.shown,state.shown+state.step);
+    rowsEl.insertAdjacentHTML('beforeend',slice.map(function(d){
+      var tie=d.rel==='both'?'<span class="chip both">Conn + follows</span>':(d.rel==='following'?'<span class="chip conn">Follows</span>':'<span class="chip conn">Connection</span>');
+      var exp=d.fjy?d.fjy:(d.grad?('grad '+d.grad):'—');
+      var bio=d.b?('<div class="bio" title="'+esc(d.b)+'">'+esc(d.b)+'</div>'):'';
+      return '<tr>'+
+        '<td class="name"><a href="'+esc(d.url)+'" target="_blank" rel="noopener">'+esc(d.n||'—')+'</a>'+bio+'</td>'+
+        '<td class="role">'+(esc(d.t)||'<span style="color:var(--faint)">—</span>')+'</td>'+
+        '<td class="loc">'+(esc(d.loc)||'<span style="color:var(--faint)">—</span>')+'</td>'+
+        '<td class="schools">'+(esc(d.s)||'<span style="color:var(--faint)">—</span>')+'</td>'+
+        '<td class="exp">'+exp+'</td>'+
+        '<td>'+tie+' <span class="src">'+esc(d.src)+'</span></td>'+
+        '<td><a class="ext" href="'+esc(d.url)+'" target="_blank" rel="noopener">Open ↗</a></td></tr>';
+    }).join(''));
+    state.shown+=slice.length;
+    moreEl.hidden=state.shown>=state.list.length;
+    moreEl.textContent='Load more ('+(state.list.length-state.shown).toLocaleString()+' left)';
+  }
+  $('#q').addEventListener('input',function(e){state.q=e.target.value;apply()});
+  $('#src').addEventListener('change',function(e){state.src=e.target.value;apply()});
+  $('#sort').addEventListener('change',function(e){state.sort=e.target.value;document.querySelectorAll('thead th[data-k]').forEach(function(t){t.removeAttribute('aria-sort')});apply()});
+  moreEl.addEventListener('click',render);
+  document.querySelectorAll('thead th[data-k]').forEach(function(th){
+    th.addEventListener('click',function(){
+      var k=th.dataset.k,asc=th.getAttribute('aria-sort')!=='ascending';
+      document.querySelectorAll('thead th[data-k]').forEach(function(t){t.removeAttribute('aria-sort')});
+      th.setAttribute('aria-sort',asc?'ascending':'descending');
+      state.list.sort(function(a,b){var av=a[k],bv=b[k];if(k==='fjy'){av=av||0;bv=bv||0;}else{av=(av||'').toString().toLowerCase();bv=(bv||'').toString().toLowerCase();}var r=cmp(av,bv);return asc?r:-r;});
+      state.shown=0;rowsEl.innerHTML='';render();
+    });
+  });
+  apply();
+})();
+</script>

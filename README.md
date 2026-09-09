@@ -11,9 +11,12 @@ self-contained folder you can drop into your own setup and adapt.
 
 Every recipe here calls the Icebreaker MCP server (tools like `search_network`
 and `manage_list_tool`). Before any skill will work, connect Icebreaker as a
-connector in your Claude client and sign in. Some features (e.g. team-shared
-lists) require a paid Icebreaker Teams plan; skills degrade gracefully and tell
-you when a step needs one.
+connector in your Claude client and sign in — see the
+[MCP Quickstart](https://docs.icebreaker.xyz/docs/mcp-quickstart) for setup
+steps across Claude, ChatGPT, Codex, Cursor, and Goose. Some features (e.g.
+team-shared lists) require a paid Icebreaker Teams plan; skills degrade
+gracefully and tell you when a step needs one. Full tool reference:
+[Available Tools](https://docs.icebreaker.xyz/docs/mcp-available-tools).
 
 ## Skills
 
@@ -68,4 +71,4 @@ under a future `examples/`) with a clear `SKILL.md` and open a PR.
 
 ---
 
-Maintained by [Icebreaker Labs](https://app.icebreaker.xyz).
+Maintained by [Icebreaker Labs](https://app.icebreaker.xyz). Full developer docs: [docs.icebreaker.xyz](https://docs.icebreaker.xyz).

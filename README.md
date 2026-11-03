@@ -23,6 +23,8 @@ gracefully and tell you when a step needs one. Full tool reference:
 | Skill | What it does |
 |-------|--------------|
 | [`network-lead-scan`](skills/network-lead-scan) | Exhaustively scan one person's whole Icebreaker network against a description or job description, then hand back a browsable network, a tiered shortlist CSV (with real profile URLs), and a shared Icebreaker list. Built for sourcing candidates, hires, prospects, and warm leads from a teammate's or investor's connections. |
+| [`start-sync-team-trusted-connections`](skills/start-sync-team-trusted-connections) | Same as `start-sync-trusted-connections`, for one teammate's network, with syncs queued on their behalf. Team admins. |
+| [`start-sync-trusted-connections`](skills/start-sync-trusted-connections) | Scan your network for the people you're closest to (teammates, former colleagues, classmates, people on several of your networks), show who's synced, and queue syncs for the ones you pick. |
 
 ## Installing a skill
 
@@ -46,8 +48,11 @@ reduced (slower, serial) form elsewhere.
 
 ## What's in a skill
 
+Icebreaker-maintained skills live in `skills/<name>/`. User-submitted skills
+live in [`skills/community/<name>/`](skills/community).
+
 ```
-skills/<name>/
+skills/<name>/                  # or skills/community/<name>/
 ├── SKILL.md        # the workflow — when it triggers and how to run it
 ├── scripts/        # helper scripts for the mechanical, repeated steps
 ├── references/     # prompt templates and docs loaded as needed
@@ -66,8 +71,9 @@ skills/<name>/
 
 ## Contributing
 
-Have a recipe worth sharing? Add a folder under `skills/` (or a walkthrough
-under a future `examples/`) with a clear `SKILL.md` and open a PR.
+Have a recipe worth sharing? Add a folder under [`skills/community/`](skills/community)
+with a clear `SKILL.md` and open a PR. Icebreaker-maintained skills stay in
+`skills/`.
 
 ---
 

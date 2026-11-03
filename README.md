@@ -25,6 +25,11 @@ gracefully and tell you when a step needs one. Full tool reference:
 | [`network-lead-scan`](skills/network-lead-scan) | Exhaustively scan one person's whole Icebreaker network against a description or job description, then hand back a browsable network, a tiered shortlist CSV (with real profile URLs), and a shared Icebreaker list. Built for sourcing candidates, hires, prospects, and warm leads from a teammate's or investor's connections. |
 | [`start-sync-team-trusted-connections`](skills/start-sync-team-trusted-connections) | Same as `start-sync-trusted-connections`, for one teammate's network, with syncs queued on their behalf. Team admins. |
 | [`start-sync-trusted-connections`](skills/start-sync-trusted-connections) | Scan your network for the people you're closest to (teammates, former colleagues, classmates, people on several of your networks), show who's synced, and queue syncs for the ones you pick. |
+| [`monitor-list-for-updates`](skills/monitor-list-for-updates) | Daily email of all activity from people on a team list. No text rule. |
+| [`monitor-list-for-hiring`](skills/monitor-list-for-hiring) | Daily email when people on a team list post about hiring or new hires. |
+| [`monitor-list-for-launches`](skills/monitor-list-for-launches) | Daily email when people on a team list post a product launch or update. |
+| [`monitor-list-for-job-changes`](skills/monitor-list-for-job-changes) | Daily email when people on a team list post a job change. |
+| [`monitor-list-for-fundraises`](skills/monitor-list-for-fundraises) | Daily email when people on a team list post a fundraise or investment. |
 
 ## Installing a skill
 

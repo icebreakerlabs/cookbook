@@ -23,6 +23,7 @@ gracefully and tell you when a step needs one. Full tool reference:
 | Skill | What it does |
 |-------|--------------|
 | [`network-lead-scan`](skills/network-lead-scan) | Exhaustively scan one person's whole Icebreaker network against a description or job description, then hand back a browsable network, a tiered shortlist CSV (with real profile URLs), and a shared Icebreaker list. Built for sourcing candidates, hires, prospects, and warm leads from a teammate's or investor's connections. |
+| [`referral-jam`](skills/referral-jam) | When a new teammate joins, scan their network against your open roles and return a short list per role with why each person fits, how the teammate knows them, and a referral note they can send. Builds on `network-lead-scan`. |
 | [`start-sync-team-trusted-connections`](skills/start-sync-team-trusted-connections) | Same as `start-sync-trusted-connections`, for one teammate's network, with syncs queued on their behalf. Team admins. |
 | [`start-sync-trusted-connections`](skills/start-sync-trusted-connections) | Scan your network for the people you're closest to (teammates, former colleagues, classmates, people on several of your networks), show who's synced, and queue syncs for the ones you pick. |
 | [`monitor-list-for-updates`](skills/monitor-list-for-updates) | Daily email of all activity from people on a team list. No text rule. |

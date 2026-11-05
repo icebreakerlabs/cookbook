@@ -26,6 +26,7 @@ gracefully and tell you when a step needs one. Full tool reference:
 | [`referral-jam`](skills/referral-jam) | When a new teammate joins, scan their network against your open roles and return a short list per role with why each person fits, how the teammate knows them, and a referral note they can send. Builds on `network-lead-scan`. |
 | [`start-sync-team-trusted-connections`](skills/start-sync-team-trusted-connections) | Same as `start-sync-trusted-connections`, for one teammate's network, with syncs queued on their behalf. Team admins. |
 | [`start-sync-trusted-connections`](skills/start-sync-trusted-connections) | Scan your network for the people you're closest to (teammates, former colleagues, classmates, people on several of your networks), show who's synced, and queue syncs for the ones you pick. |
+| [`report-unsynced-teammates`](skills/report-unsynced-teammates) | Report verified members and collaborators whose LinkedIn, X, or GitHub networks are not synced on the team, then offer to queue the missing syncs. Safe on a schedule. |
 | [`monitor-list-for-updates`](skills/monitor-list-for-updates) | Daily email of all activity from people on a team list. No text rule. |
 | [`monitor-list-for-hiring`](skills/monitor-list-for-hiring) | Daily email when people on a team list post about hiring or new hires. |
 | [`monitor-list-for-launches`](skills/monitor-list-for-launches) | Daily email when people on a team list post a product launch or update. |

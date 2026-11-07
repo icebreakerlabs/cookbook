@@ -147,7 +147,7 @@ Report what was queued, what was skipped, and any failures. Remind people to
 install the Icebreaker extension if syncs were queued:
 https://chromewebstore.google.com/detail/icebreaker-extension/lpcijfonncfkamojhlobefeoeccapjll
 
-Optionally offer `start-sync-team-trusted-connections` for a collaborator once
+Optionally offer `sync-team-trusted-connections` for a collaborator once
 their own network syncs are **completed** — that is a separate step (trusted
 connections shortlist), not part of this report.
 

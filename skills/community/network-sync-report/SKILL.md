@@ -54,7 +54,9 @@ Flags (system clock): last-24h updates; stuck pending/processing >7d; failed wit
 
 ## 4. Dashboard
 
-Replace `__NAME__` (HTML-escaped), `__DATE__` (`YYYY-MM-DD`), and `__SYNC_DATA__` with **one JSON array** of normalized rows using `JSON.stringify` (or your environment's equivalent). Insert it inside the `<script type="application/json" id="sync-data">` block — do not paste raw objects into executable JS.
+Replace `__NAME__` (HTML-escaped), `__DATE__` (`YYYY-MM-DD`), and `__SYNC_DATA__` inside the template.
+
+Serialize normalized rows as one JSON array, then **must** neutralize HTML script closers in the serialized text: `JSON.stringify(rows).replace(/</g, '\\u003c')` (same rule in any language: every `<` → the six characters `\u003c`). Plain `JSON.stringify` alone is not enough — a literal `</script>` in row data can end the element before `JSON.parse` runs. Insert that string into `<script type="application/json" id="sync-data">` only; do not paste raw objects into executable JS.
 
 Offline; no external deps. Untrusted fields use `textContent` only (template already does). Profile links only for known channels.
 

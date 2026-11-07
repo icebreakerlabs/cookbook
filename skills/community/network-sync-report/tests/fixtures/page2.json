@@ -1,0 +1,34 @@
+{
+  "data": {
+    "syncs": [
+      {
+        "id": "sync-dup",
+        "targetSocialPath": "twitter/charlie-demo",
+        "status": "failed",
+        "connectionCount": 0,
+        "createdAt": "2026-10-20T08:00:00Z",
+        "updatedAt": "2026-10-22T08:00:00Z",
+        "failureDetail": "Stale duplicate row should dedupe by id"
+      },
+      {
+        "id": "sync-003",
+        "targetSocialPath": "unknownhost/demo-user",
+        "status": "cancelled",
+        "connectionCount": null,
+        "createdAt": "not-a-date",
+        "updatedAt": "",
+        "failureDetail": "</script><img src=x onerror=alert(1)>"
+      },
+      {
+        "id": "sync-004",
+        "targetSocialPath": "linkedin/alice-demo",
+        "status": "completed",
+        "connectionCount": 50,
+        "createdAt": "2026-10-01T10:00:00Z",
+        "updatedAt": "2026-11-01T10:00:00Z"
+      }
+    ],
+    "counts": { "completed": 2, "processing": 1, "pending": 0, "failed": 1 },
+    "nextCursor": null
+  }
+}

@@ -1,0 +1,3 @@
+id,target_social_path,status,connections_indexed,created_at,updated_at,failure_reason,failure_detail
+u1,github/octo-demo,completed,42,2026-11-01 10:00:00,2026-11-02 11:00:00,,
+u2,linkedin/+leading-eq,failed,,2026-10-01 09:00:00,2026-10-02 09:00:00,,@SUM(A1)

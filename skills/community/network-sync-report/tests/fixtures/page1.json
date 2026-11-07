@@ -1,0 +1,35 @@
+{
+  "data": {
+    "syncs": [
+      {
+        "id": "sync-001",
+        "targetSocialPath": "linkedin/alice-demo",
+        "channelType": "linkedin",
+        "status": "completed",
+        "connectionCount": 120,
+        "createdAt": "2026-11-01T10:00:00Z",
+        "updatedAt": "2026-11-05T12:00:00Z"
+      },
+      {
+        "id": "sync-002",
+        "targetSocialPath": "github/bob-demo",
+        "channelType": "GitHub",
+        "status": "processing",
+        "connectionCount": null,
+        "createdAt": "2026-11-04T08:00:00Z",
+        "updatedAt": "2026-11-06T09:00:00Z"
+      },
+      {
+        "id": "sync-dup",
+        "targetSocialPath": "X/charlie-demo",
+        "status": "failed",
+        "connectionCount": 0,
+        "createdAt": "2026-10-20T08:00:00Z",
+        "updatedAt": "2026-10-21T08:00:00Z",
+        "failureReason": "=HYPERLINK(\"bad\")"
+      }
+    ],
+    "counts": { "completed": 2, "processing": 1, "pending": 0, "failed": 1 },
+    "nextCursor": "cursor-page-2"
+  }
+}

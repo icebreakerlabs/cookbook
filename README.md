@@ -33,6 +33,8 @@ gracefully and tell you when a step needs one. Full tool reference:
 | [`monitor-list-for-job-changes`](skills/monitor-list-for-job-changes) | Daily email when people on a team list post a job change. |
 | [`monitor-list-for-fundraises`](skills/monitor-list-for-fundraises) | Daily email when people on a team list post a fundraise or investment. |
 
+Community-contributed skills live under [`skills/community/`](skills/community/). See that README for the list.
+
 ## Installing a skill
 
 Pick whichever fits your setup — no marketplace or submission required.

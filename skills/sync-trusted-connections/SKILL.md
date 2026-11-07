@@ -1,5 +1,5 @@
 ---
-name: start-sync-trusted-connections
+name: sync-trusted-connections
 description: >-
   Find the people in your network you're closest to (teammates, former
   colleagues, former classmates, people you're connected to on several

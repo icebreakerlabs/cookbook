@@ -1,7 +1,7 @@
 ---
-name: start-sync-team-trusted-connections
+name: sync-team-trusted-connections
 description: >-
-  Run start-sync-trusted-connections for a teammate: scan their network for the
+  Run sync-trusted-connections for a teammate: scan their network for the
   people they're closest to, let you pick, and queue the syncs on their behalf.
   Use when someone says "sync <teammate>'s trusted connections" or "run trusted
   connections across the team".
@@ -9,7 +9,7 @@ description: >-
 
 # Sync a teammate's trusted connections
 
-Same as `start-sync-trusted-connections`, but for one teammate's network, with
+Same as `sync-trusted-connections`, but for one teammate's network, with
 syncs queued on their behalf. Run it once per teammate.
 
 Requires: Icebreaker team plan, team admin, and the teammate listed as a team
@@ -26,7 +26,7 @@ Use `company_domain` as `<team.com>`. Note the teammate's `pkid` and
 `omni_profile.social_name`. No `pkid` means you can't queue on their behalf.
 Stop.
 
-## 2. Run start-sync-trusted-connections with these changes
+## 2. Run sync-trusted-connections with these changes
 
 - **Step 1.1**: instead of `lookup_viewer_tool`, look up the teammate and save
   that response as `viewer.json`:

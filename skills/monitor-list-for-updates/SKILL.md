@@ -1,19 +1,20 @@
 ---
 name: monitor-list-for-updates
-description: >-
-  Get a daily email of posts from people on an Icebreaker list, with no text
-  rule. Turns on the list monitor for an existing team list. Use when someone
-  says "ping me when <people> post", "monitor this list for updates", or
-  "watch <people>".
+slug: monitor-list-for-updates
+description: Get a daily email of everything people on your team list post.
+updated: 2026-11-17
+requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---
 
 # Monitor a list for updates
 
+**When to use:** "Ping me when <people> post", "monitor this list for updates", or "watch <people>".
+
 Icebreaker list monitors send a daily digest (around 9am ET) of activity from
 people on a team list. This one includes every post. No text rule.
 
-Requires: Icebreaker Starter+ team plan and manage-members permission on the
-list. Personal lists can't have monitors. If either is missing, stop and say so.
+Requires Starter or higher and manage-members permission on the list. Personal
+lists can't have monitors. If either is missing, stop and say so.
 
 ## Inputs
 

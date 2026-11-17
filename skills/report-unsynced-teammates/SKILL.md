@@ -1,13 +1,15 @@
 ---
 name: report-unsynced-teammates
-description: >-
-  List verified team members and collaborators whose LinkedIn, X, or GitHub
-  networks are not synced on the team, then offer to queue the missing syncs.
-  Use when someone asks who on the team still needs to sync, "unsynced
-  teammates", or wants a periodic check of team network coverage.
+slug: report-unsynced-teammates
+description: See which teammates and collaborators haven't synced their LinkedIn, X, or GitHub, then queue the missing syncs.
+updated: 2026-11-17
+requires: Icebreaker MCP. Starter or higher to queue collaborator syncs as admin.
 ---
 
 # Report unsynced teammates
+
+**When to use:** Who on the team still needs to sync, "unsynced teammates", or a
+periodic check of team network coverage.
 
 Shows who on your team roster still needs their networks synced so the team
 can search their connections. Safe to run on a schedule (for example weekly).
@@ -18,9 +20,8 @@ Each run is a fresh read; people drop off the list once every path is
 are not a verified member (`get_team_tool`) or a team collaborator
 (`get_team_collaborators`). Those APIs define the roster.
 
-Requires: Icebreaker team with a `company_domain` from entitlements. Queuing
-on a collaborator's behalf needs team admin and a non-empty **pkid** on that
-row.
+Requires a `company_domain` from entitlements. Queuing on a collaborator's
+behalf needs team admin and a non-empty **pkid** on that row.
 
 ## 1. Team domain
 
@@ -81,11 +82,11 @@ queue_network_sync_status_tool(social_path="<path>", teamDomainScope="<team.com>
 
 Do **not** pass `collaborator_pkid` while building the report.
 
-Interpret status the same way as `referral-jam`:
+Interpret status:
 
-- **completed** — searchable now
-- No sync record — not synced
-- Anything else — in progress or failed (include `failureReason` when present)
+- **completed**: searchable now
+- No sync record: not synced
+- Anything else: in progress or failed (include `failureReason` when present)
 
 Do not call `queue_network_sync_tool` until step 6 and the user confirms.
 
@@ -101,12 +102,12 @@ is present.
 
 Group rows:
 
-1. **Not synced** — every path missing a record or not completed, and none in
+1. **Not synced**: every path missing a record or not completed, and none in
    progress
-2. **Partial** — at least one **completed** and at least one not
-3. **In progress or failed** — any path not completed where at least one is
+2. **Partial**: at least one **completed** and at least one not
+3. **In progress or failed**: any path not completed where at least one is
    in progress or failed
-4. **No syncable network** — no linkedin / twitter / github path found
+4. **No syncable network**: no linkedin / twitter / github path found
 
 Add a one-line summary: counts per group and `<team.com>`.
 
@@ -147,8 +148,8 @@ Report what was queued, what was skipped, and any failures. Remind people to
 install the Icebreaker extension if syncs were queued:
 https://chromewebstore.google.com/detail/icebreaker-extension/lpcijfonncfkamojhlobefeoeccapjll
 
-Optionally offer `sync-team-trusted-connections` for a collaborator once
-their own network syncs are **completed** — that is a separate step (trusted
+Optionally offer [sync-team-trusted-connections](https://www.icebreaker.xyz/prompts/sync-team-trusted-connections) for a collaborator once
+their own network syncs are **completed**. That is a separate step (trusted
 connections shortlist), not part of this report.
 
 ## Guardrails

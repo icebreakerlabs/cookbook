@@ -1,21 +1,18 @@
 ---
 name: referral-jam
-description: >-
-  When a new person joins your team, go through their network and find people
-  who fit your open roles, so the new teammate can refer people they already
-  know. Use when someone says "run a referral jam for <new teammate>", "<name>
-  just joined, who do they know for our open roles", or "run a referral drive
-  for <teammate>". Delivers a short list per role with why each
-  person fits and how the new teammate knows them, plus a referral note the new
-  teammate can send themselves. At the end, offers to set up an optional
-  routine that checks for new teammates on a schedule.
+slug: referral-jam
+description: Find people in a new teammate's network who fit your open roles, and draft referral notes they can send.
+updated: 2026-11-17
+requires: Icebreaker MCP. Free plan for search. Starter or higher to save team lists.
 ---
 
 # Referral jam
 
 New teammates know people you have never seen. Most of them will not think of names on the spot, but they will recognize them in a list. This skill builds that list for each open role and hands it to the new teammate.
 
-Builds on `network-lead-scan` for the full network pull and batch review. Install it too.
+**When to use:** "Run a referral jam for <new teammate>", "<name> just joined, who do they know for our open roles", or "run a referral drive for <teammate>".
+
+See also: [network-lead-scan](https://www.icebreaker.xyz/prompts/network-lead-scan) for the full scan method this skill reuses inline below.
 
 ## 1. Confirm the trigger
 
@@ -52,13 +49,71 @@ This call is read only. If no network is synced, stop. Tell the user the new tea
 
 ## 4. Pull the network
 
-Follow `network-lead-scan` steps 2 and 3: an empty-glob search with `connectedSocialPaths=["profile/<id>"]` and `ordinality=["Global"]`, paginated to `hits.total`, then `build_network_json.sh` and `build_compact_batches.sh`. Cover 1st-degree LinkedIn connections, X, and GitHub. Do not shortcut with keyword searches. They miss people whose titles do not say the obvious word.
+Exhaustive pull (no keyword globs):
+
+1. `search_network(connectedSocialPaths=["profile/<id>"], ordinality=["Global"], sources=["all"], limit=1, hideViewer=true)` for `hits.total`.
+2. Paginate `limit=100` through `total`. Use overlapping last page if needed so every page is on disk. Parallelize page fetches.
+3. Merge saved pages into `network_full.json`: classify following vs connection
+   files, build `conn.txt` / `foll.txt` of social names, then run the same merge
+   `jq -s` filter used to dedupe by `social_name` and set `rel` to
+   `connection | following | both` on each profile (with `first_job_year` and
+   `latest_grad_year` derived from work and education history).
+4. Build compact batch files (~175 people per batch):
+
+```bash
+mkdir -p batches
+jq -r '
+  to_entries[] | .key as $i | .value as $p |
+  ($p.work | map((.title // "?") + "@" + (.company // "?")
+      + "(" + ((.startDate // "")[0:4]) + "-" + ((.endDate // "now")[0:4]) + ")")
+   | .[0:4] | join("; ")) as $wk |
+  { i: $i, name: $p.name, loc: $p.location, title: $p.job_title,
+    bio: ($p.bio // "" | .[0:280]),
+    schools: ($p.schools | map(select(. != null)) | join(", ")),
+    fjy: $p.first_job_year, grad: $p.latest_grad_year,
+    work: $wk, li: $p.linkedin, tw: $p.twitter, src: $p.source, rel: $p.rel,
+    url: ("https://app.icebreaker.xyz/" + $p.social_name) } | @json
+' network_full.json > batches/_compact.jsonl
+split -d -l 175 batches/_compact.jsonl batches/batch_
+```
+
+Cover 1st-degree LinkedIn connections, X, and GitHub. Do not shortcut with keyword searches. They miss people whose titles do not say the obvious word.
 
 ## 5. Match people to roles
 
-Use `network-lead-scan/references/reviewer-prompt.md` with all roles in the prompt, numbered. A person can match more than one role. Treat unknown location or experience as a maybe, not a no. Be inclusive at this step. Ranking comes later. Ask for one line per match: `role_numbers | name | url | why (one line)`.
+Fill **all roles** in the reviewer prompt below, numbered (one ROLE block per open role). A person can match more than one role. Treat unknown location or experience as a maybe, not a no. Be inclusive at this step. Ranking comes later. Ask for one line per match: `role_numbers | name | url | why (one line)`.
 
-Spawn one reviewer per batch in a single turn. Collect results by url, not by index.
+Spawn one `general-purpose` reviewer per batch in a single turn. Collect results by url, not by index.
+
+```
+You are screening people in a professional network against one or more open roles.
+Read the file at this exact path (one JSON object per line):
+
+<ABSOLUTE_PATH_TO_BATCH_FILE>
+
+Each line has: i (index), name, loc (location), title (current job title), bio,
+schools, fjy (first_job_year = earliest job start year, may be null), grad (latest
+graduation year, may be null), work (recent roles with year ranges), li (linkedin
+handle), tw (twitter handle), src (source platform), rel (how they're tied),
+url (profile link).
+
+OPEN ROLES (flag a person if they fit any role; note all matching role numbers):
+1. ROLE: [role 1 ...]
+   EXPERIENCE: [...]
+   LOCATION: [...]
+   SCHOOL / OTHER BAR: [...]
+2. ROLE: [role 2 ...]
+   ...
+
+Be INCLUSIVE on role fit (titles often lack keywords). Treat unknown location or
+experience as neutral. Exclude only clear misses. Resolve people by url, never index.
+
+For every flagged person output one line:
+role_numbers | name | url | why (one line)
+
+Sort strongest fit first. End with: "FLAGGED: <count> of <total reviewed>".
+Output nothing else. Return this list as your final message.
+```
 
 Drop people who already work at the company.
 

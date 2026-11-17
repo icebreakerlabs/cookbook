@@ -1,21 +1,22 @@
 ---
 name: monitor-list-for-launches
-description: >-
-  Get a daily email when people on an Icebreaker list announce a product
-  launch or update. Turns on the list monitor with a default launch rule. Use
-  when someone says "ping me when <people> launch something" or "monitor this
-  list for launches".
+slug: monitor-list-for-launches
+description: Get a daily email when someone on your team list posts a product launch or major update.
+updated: 2026-11-17
+requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---
 
 # Monitor a list for launches
+
+**When to use:** "Ping me when <people> launch something" or "monitor this list for launches".
 
 Icebreaker list monitors send a daily digest (around 9am ET) of activity from
 people on a team list. This one keeps product launches and updates.
 
 A launch is a reason to reach out, and a way to follow competitors and partners.
 
-Requires: Icebreaker Starter+ team plan and manage-members permission on the
-list. Personal lists can't have monitors. If either is missing, stop and say so.
+Requires Starter or higher and manage-members permission on the list. Personal
+lists can't have monitors. If either is missing, stop and say so.
 
 ## Inputs
 

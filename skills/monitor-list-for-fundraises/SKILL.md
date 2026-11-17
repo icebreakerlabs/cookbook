@@ -1,21 +1,22 @@
 ---
 name: monitor-list-for-fundraises
-description: >-
-  Get a daily email when people on an Icebreaker list announce a fundraise or
-  investment. Turns on the list monitor with a default fundraising rule. Use
-  when someone says "ping me when <people> announce a raise" or "monitor this
-  list for fundraises".
+slug: monitor-list-for-fundraises
+description: Get a daily email when someone on your team list announces a raise or an investment.
+updated: 2026-11-17
+requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---
 
 # Monitor a list for fundraises
+
+**When to use:** "Ping me when <people> announce a raise" or "monitor this list for fundraises".
 
 Icebreaker list monitors send a daily digest (around 9am ET) of activity from
 people on a team list. This one keeps fundraising and investment announcements.
 
 A fresh raise means new budget and new hiring.
 
-Requires: Icebreaker Starter+ team plan and manage-members permission on the
-list. Personal lists can't have monitors. If either is missing, stop and say so.
+Requires Starter or higher and manage-members permission on the list. Personal
+lists can't have monitors. If either is missing, stop and say so.
 
 ## Inputs
 

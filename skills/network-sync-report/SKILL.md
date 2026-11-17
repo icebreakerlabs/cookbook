@@ -1,7 +1,7 @@
 ---
 name: network-sync-report
 slug: network-sync-report
-description: Build a read-only HTML sync status dashboard and CSV from list_network_syncs_tool for you or a teammate.
+description: See which of your networks, or a teammate's, are synced. Builds a read-only dashboard and a CSV.
 updated: 2026-11-17
 requires: Icebreaker MCP. Any plan.
 ---

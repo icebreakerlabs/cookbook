@@ -1,7 +1,7 @@
 ---
 name: monitor-list-for-hiring
 slug: monitor-list-for-hiring
-description: Turn on a daily email when people on a team list post about hiring, using a default hiring rule.
+description: Get a daily email when someone on your team list posts about hiring.
 updated: 2026-11-17
 requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---

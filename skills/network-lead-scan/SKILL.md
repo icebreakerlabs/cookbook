@@ -1,7 +1,7 @@
 ---
 name: network-lead-scan
 slug: network-lead-scan
-description: Scan one person's whole Icebreaker network against a target profile and return a tiered shortlist plus a shared team list.
+description: Search one person's whole network for people who fit a profile you describe. Returns a ranked shortlist and a shared team list.
 updated: 2026-11-17
 requires: Icebreaker MCP. Free plan for search. Starter or higher to save a shared list.
 ---

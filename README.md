@@ -24,17 +24,17 @@ gracefully and tell you when a step needs one. Full tool reference:
 
 | Skill | What it does |
 |-------|--------------|
-| [`network-lead-scan`](skills/network-lead-scan) | Exhaustively scan one person's whole Icebreaker network against a description or job description, then hand back a browsable network, a tiered shortlist CSV (with real profile URLs), and a shared Icebreaker list. Built for sourcing candidates, hires, prospects, and warm leads from a teammate's or investor's connections. |
-| [`referral-jam`](skills/referral-jam) | When a new teammate joins, scan their network against your open roles and return a short list per role with why each person fits, how the teammate knows them, and a referral note they can send. Builds on `network-lead-scan`. |
-| [`sync-team-trusted-connections`](skills/sync-team-trusted-connections) | Same as `sync-trusted-connections`, for one teammate's network, with syncs queued on their behalf. Team admins. |
-| [`sync-trusted-connections`](skills/sync-trusted-connections) | Scan your network for the people you're closest to (teammates, former colleagues, classmates, people on several of your networks), show who's synced, and queue syncs for the ones you pick. |
-| [`report-unsynced-teammates`](skills/report-unsynced-teammates) | Report verified members and collaborators whose LinkedIn, X, or GitHub networks are not synced on the team, then offer to queue the missing syncs. Safe on a schedule. |
-| [`network-sync-report`](skills/network-sync-report) | Build a read-only HTML dashboard and CSV of network sync status for you or a teammate from `list_network_syncs_tool`. |
-| [`monitor-list-for-updates`](skills/monitor-list-for-updates) | Daily email of all activity from people on a team list. No text rule. |
-| [`monitor-list-for-hiring`](skills/monitor-list-for-hiring) | Daily email when people on a team list post about hiring or new hires. |
-| [`monitor-list-for-launches`](skills/monitor-list-for-launches) | Daily email when people on a team list post a product launch or update. |
-| [`monitor-list-for-job-changes`](skills/monitor-list-for-job-changes) | Daily email when people on a team list post a job change. |
-| [`monitor-list-for-fundraises`](skills/monitor-list-for-fundraises) | Daily email when people on a team list post a fundraise or investment. |
+| [`network-lead-scan`](skills/network-lead-scan) | Search one person's whole network for people who fit a profile you describe. Returns a ranked shortlist and a shared team list. |
+| [`referral-jam`](skills/referral-jam) | Find people in a new teammate's network who fit your open roles, and draft referral notes they can send. |
+| [`sync-team-trusted-connections`](skills/sync-team-trusted-connections) | For team admins: find a teammate's closest connections, pick who to sync, and queue syncs for them. |
+| [`sync-trusted-connections`](skills/sync-trusted-connections) | Find the people you're closest to, see who's synced, and queue syncs for the ones you pick. |
+| [`report-unsynced-teammates`](skills/report-unsynced-teammates) | See which teammates and collaborators haven't synced their LinkedIn, X, or GitHub, then queue the missing syncs. |
+| [`network-sync-report`](skills/network-sync-report) | See which of your networks, or a teammate's, are synced. Builds a read-only dashboard and a CSV. |
+| [`monitor-list-for-updates`](skills/monitor-list-for-updates) | Get a daily email of everything people on your team list post. |
+| [`monitor-list-for-hiring`](skills/monitor-list-for-hiring) | Get a daily email when someone on your team list posts about hiring. |
+| [`monitor-list-for-launches`](skills/monitor-list-for-launches) | Get a daily email when someone on your team list posts a product launch or major update. |
+| [`monitor-list-for-job-changes`](skills/monitor-list-for-job-changes) | Get a daily email when someone on your team list changes jobs. |
+| [`monitor-list-for-fundraises`](skills/monitor-list-for-fundraises) | Get a daily email when someone on your team list announces a raise or an investment. |
 
 ## Installing a skill
 

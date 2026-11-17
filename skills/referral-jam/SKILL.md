@@ -1,7 +1,7 @@
 ---
 name: referral-jam
 slug: referral-jam
-description: Find people in a new teammate's network who fit your open roles and draft referral notes they can send.
+description: Find people in a new teammate's network who fit your open roles, and draft referral notes they can send.
 updated: 2026-11-17
 requires: Icebreaker MCP. Free plan for search. Starter or higher to save team lists.
 ---

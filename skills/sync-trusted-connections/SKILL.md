@@ -1,7 +1,7 @@
 ---
 name: sync-trusted-connections
 slug: sync-trusted-connections
-description: Find your closest connections, show sync status, and queue syncs for the people you pick.
+description: Find the people you're closest to, see who's synced, and queue syncs for the ones you pick.
 updated: 2026-11-17
 requires: Icebreaker MCP. Any plan including free. Your own network synced.
 ---

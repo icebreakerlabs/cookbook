@@ -1,7 +1,7 @@
 ---
 name: monitor-list-for-updates
 slug: monitor-list-for-updates
-description: Turn on a daily email digest of all posts from people on a team list, with no text filter.
+description: Get a daily email of everything people on your team list post.
 updated: 2026-11-17
 requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---

@@ -1,7 +1,7 @@
 ---
 name: monitor-list-for-fundraises
 slug: monitor-list-for-fundraises
-description: Turn on a daily email when people on a team list post fundraises or investment news.
+description: Get a daily email when someone on your team list announces a raise or an investment.
 updated: 2026-11-17
 requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---

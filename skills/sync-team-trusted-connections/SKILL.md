@@ -1,7 +1,7 @@
 ---
 name: sync-team-trusted-connections
 slug: sync-team-trusted-connections
-description: Scan a teammate's closest connections, let you pick, and queue syncs on their behalf.
+description: "For team admins: find a teammate's closest connections, pick who to sync, and queue syncs for them."
 updated: 2026-11-17
 requires: Icebreaker MCP. Starter or higher. Team admin and teammate listed as collaborator.
 ---

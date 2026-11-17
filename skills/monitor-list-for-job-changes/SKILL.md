@@ -1,7 +1,7 @@
 ---
 name: monitor-list-for-job-changes
 slug: monitor-list-for-job-changes
-description: Turn on a daily email when people on a team list post job changes, using a default rule.
+description: Get a daily email when someone on your team list changes jobs.
 updated: 2026-11-17
 requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---

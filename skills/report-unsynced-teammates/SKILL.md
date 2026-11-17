@@ -1,7 +1,7 @@
 ---
 name: report-unsynced-teammates
 slug: report-unsynced-teammates
-description: Report team members and collaborators whose networks are not synced, then offer to queue missing syncs.
+description: See which teammates and collaborators haven't synced their LinkedIn, X, or GitHub, then queue the missing syncs.
 updated: 2026-11-17
 requires: Icebreaker MCP. Starter or higher to queue collaborator syncs as admin.
 ---

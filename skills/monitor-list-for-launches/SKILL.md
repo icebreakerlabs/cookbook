@@ -1,7 +1,7 @@
 ---
 name: monitor-list-for-launches
 slug: monitor-list-for-launches
-description: Turn on a daily email when people on a team list post product launches or major updates.
+description: Get a daily email when someone on your team list posts a product launch or major update.
 updated: 2026-11-17
 requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---

@@ -1,12 +1,14 @@
 ---
 name: monitor-list-for-job-changes
-description: >-
-  Get a daily email when people on an Icebreaker list change jobs. Turns on
-  the list monitor with a default job-change rule. Use when someone says
-  "ping me when <people> change jobs" or "monitor this list for job changes".
+slug: monitor-list-for-job-changes
+description: Turn on a daily email when people on a team list post job changes, using a default rule.
+updated: 2026-11-17
+requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---
 
 # Monitor a list for job changes
+
+**When to use:** "Ping me when <people> change jobs" or "monitor this list for job changes".
 
 Icebreaker list monitors send a daily digest (around 9am ET) of activity from
 people on a team list. This one keeps job changes.
@@ -14,8 +16,8 @@ people on a team list. This one keeps job changes.
 A job change is a reason to reach out. A champion who moves is a warm lead at
 the new company.
 
-Requires: Icebreaker Starter+ team plan and manage-members permission on the
-list. Personal lists can't have monitors. If either is missing, stop and say so.
+Requires Starter or higher and manage-members permission on the list. Personal
+lists can't have monitors. If either is missing, stop and say so.
 
 ## Inputs
 

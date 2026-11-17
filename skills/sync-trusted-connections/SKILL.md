@@ -1,11 +1,9 @@
 ---
 name: sync-trusted-connections
-description: >-
-  Find the people in your network you're closest to (teammates, former
-  colleagues, former classmates, people you're connected to on several
-  networks), show who's already synced, and queue syncs for the ones you pick.
-  Use when someone says "sync my trusted connections", "whose network should I
-  sync", "find my closest connections", or "get started syncing".
+slug: sync-trusted-connections
+description: Find your closest connections, show sync status, and queue syncs for the people you pick.
+updated: 2026-11-17
+requires: Icebreaker MCP. Any plan including free. Your own network synced.
 ---
 
 # Sync trusted connections
@@ -14,8 +12,8 @@ Your trusted network wants to support you but often doesn't know which doors
 they can open for you. This skill helps you map them so you can
 identify which intros are most worth making.
 
-Requires: Any plan (including free). Icebreaker account with at least your own
-network synced. Uses `network-lead-scan` (install it too) to pull the network.
+**When to use:** "Sync my trusted connections", "whose network should I sync",
+"find my closest connections", or "get started syncing".
 
 ## 1. Scan your network for trusted connections
 
@@ -29,8 +27,20 @@ No glob searches. Pull everyone, then score.
 
    `profiles[0].omni_profile.social_name` is your `profile/<id>`.
 
-2. Pull your whole network with `network-lead-scan` step 2, using your own
-   `profile/<id>` as `connectedSocialPaths`. Keep every saved page file.
+2. **Pull your whole network** (exhaustive, no globs):
+
+   ```
+   search_network(connectedSocialPaths=["profile/<id>"], ordinality=["Global"],
+     sources=["all"], limit=1, hideViewer=true)
+   ```
+
+   Note `hits.total`, then paginate `limit=100`, `offset=0,100,200,...` until
+   covered. Large pages save to tool-result files automatically; keep every file
+   path. Request an overlapping last page if the tail comes back inline so all
+   pages are on disk. Fire pages in parallel batches.
+
+   Keep every saved page file for scoring in step 3 (you do not need to merge to
+   JSON unless you want a network dump).
 
 3. Score everyone in the saved pages. Write a short script; don't read the
    pages into context. If you're on a team, first get `<team.com>` from
@@ -47,7 +57,7 @@ No glob searches. Pull everyone, then score.
      `endDate` years within 4 of yours when both are known.
    - **networks** (+1 for each beyond the first): distinct
      `network_stats[].NetworkSource` values, i.e. how many of your networks
-     (LinkedIn, X, GitHub, …) they're in. Two or more is a strong sign of a
+     (LinkedIn, X, GitHub, ...) they're in. Two or more is a strong sign of a
      real relationship.
    - Keep each person's verified `linkedin`, `twitter`, and `github`
      `linked_accounts` as `<type>/<value>` paths. Drop anyone with none.
@@ -70,7 +80,7 @@ No glob searches. Pull everyone, then score.
 
 ## 2. Let the user pick
 
-Show the shortlist with: name, profile link, why (e.g. "Coinbase 2021–23,
+Show the shortlist with: name, profile link, why (e.g. "Coinbase 2021-23,
 on LinkedIn + X"), and sync status per path.
 
 If the client can show an interactive checklist (a multi-select prompt, or an
@@ -110,7 +120,7 @@ Add `teamDomainScope="<team.com>"` if you're syncing for a team.
   no `text_rule`, or a specific one using a `monitor-*` skill (hiring,
   fundraising, partnerships, product launches, role changes). Monitors only
   work on team lists, so if they want one, create the list with
-  `teamDomainScope="<team.com>"` (Starter+ team plan).
+  `teamDomainScope="<team.com>"` (Starter or higher).
 
 ## Safety
 

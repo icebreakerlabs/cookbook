@@ -1,13 +1,14 @@
 ---
 name: monitor-list-for-hiring
-description: >-
-  Get a daily email when people on an Icebreaker list post about hiring.
-  Turns on the list monitor with a default hiring rule. Use when someone says
-  "ping me when <people> post about hiring", "monitor this list for hiring",
-  or "watch this list for hiring posts".
+slug: monitor-list-for-hiring
+description: Turn on a daily email when people on a team list post about hiring, using a default hiring rule.
+updated: 2026-11-17
+requires: Icebreaker MCP. Starter or higher. Manage-members permission on the list.
 ---
 
 # Monitor a list for hiring
+
+**When to use:** "Ping me when <people> post about hiring" or "monitor this list for hiring posts".
 
 Icebreaker list monitors send a daily digest (around 9am ET) of activity from
 people on a team list. This one keeps posts about hiring.
@@ -15,8 +16,8 @@ people on a team list. This one keeps posts about hiring.
 A hiring post is a useful signal for recruiters and for anyone selling to a
 growing team.
 
-Requires: Icebreaker Starter+ team plan and manage-members permission on the
-list. Personal lists can't have monitors. If either is missing, stop and say so.
+Requires Starter or higher and manage-members permission on the list. Personal
+lists can't have monitors. If either is missing, stop and say so.
 
 ## Inputs
 

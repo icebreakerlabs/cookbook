@@ -1,13 +1,19 @@
 ---
 name: network-sync-report
-description: Build a read-only network sync status report for yourself or a team collaborator — offline HTML dashboard plus shareable CSV from Icebreaker list_network_syncs_tool. Use for pending/done/failed sync questions, teammate sync dashboards, failure reasons, or an uploaded sync CSV export.
+slug: network-sync-report
+description: Build a read-only HTML sync status dashboard and CSV from list_network_syncs_tool for you or a teammate.
+updated: 2026-11-17
+requires: Icebreaker MCP. Any plan.
 ---
 
 # Network sync report
 
-Output: one self-contained HTML dashboard + one shareable CSV + a short chat note on anything odd. **Read-only** — do not call `queue_network_sync_tool`.
+**When to use:** Pending, done, or failed sync questions, teammate sync dashboards,
+failure reasons, or an uploaded sync CSV export.
 
-Requires Icebreaker MCP. Work in a scratch dir, not the repo. Basenames: `<slug>_<scope>_network_syncs.{html,csv}` where `<slug>` is a lowercase ascii slug from the person's first name and `<scope>` is `personal` or a sanitized team domain (e.g. `example_com`).
+Output: one self-contained HTML dashboard + one shareable CSV + a short chat note on anything odd. **Read-only.** Do not call `queue_network_sync_tool`.
+
+Work in a scratch dir, not the repo. Basenames: `<slug>_<scope>_network_syncs.{html,csv}` where `<slug>` is a lowercase ascii slug from the person's first name and `<scope>` is `personal` or a sanitized team domain (e.g. `example_com`).
 
 ## 0. Scope
 
@@ -56,7 +62,7 @@ Flags (system clock): last-24h updates; stuck pending/processing >7d; failed wit
 
 Replace `__NAME__` (HTML-escaped), `__DATE__` (`YYYY-MM-DD`), and `__SYNC_DATA__` inside the template.
 
-Serialize normalized rows as one JSON array, then **must** neutralize HTML script closers in the serialized text: `JSON.stringify(rows).replace(/</g, '\\u003c')` (same rule in any language: every `<` → the six characters `\u003c`). Plain `JSON.stringify` alone is not enough — a literal `</script>` in row data can end the element before `JSON.parse` runs. Insert that string into `<script type="application/json" id="sync-data">` only; do not paste raw objects into executable JS.
+Serialize normalized rows as one JSON array, then **must** neutralize HTML script closers in the serialized text: `JSON.stringify(rows).replace(/</g, '\\u003c')` (same rule in any language: every `<` becomes the six characters `\u003c`). Plain `JSON.stringify` alone is not enough. A literal `</script>` in row data can end the element before `JSON.parse` runs. Insert that string into `<script type="application/json" id="sync-data">` only; do not paste raw objects into executable JS.
 
 Offline; no external deps. Untrusted fields use `textContent` only (template already does). Profile links only for known channels.
 
@@ -179,7 +185,7 @@ const td = (cls, text) => { const el = document.createElement('td'); if (cls) el
 const profile = (r) => {
   const cell = td(); const base = BASE[r.channel];
   if (base && r.handle) { const a = document.createElement('a'); a.href = base + encodeURIComponent(r.handle); a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = r.handle; cell.appendChild(a); }
-  else { cell.textContent = r.handle || '—'; }
+  else { cell.textContent = r.handle || 'n/a'; }
   return cell;
 };
 const fill = (id, rows, cols, n) => {
@@ -190,14 +196,14 @@ const fill = (id, rows, cols, n) => {
 const maxC = Math.max(1, ...done.map((r) => conns(r) ?? 0));
 fill('done-rows', done, (r) => {
   const cell = td('r'); const v = conns(r);
-  if (v != null && !Number.isNaN(v)) { const wrap = document.createElement('div'); wrap.className = 'conn'; const i = document.createElement('i'); i.style.width = (v / maxC * 4) + 'rem'; const em = document.createElement('em'); em.textContent = fmt(v); wrap.append(i, em); cell.appendChild(wrap); } else cell.textContent = '—';
+  if (v != null && !Number.isNaN(v)) { const wrap = document.createElement('div'); wrap.className = 'conn'; const i = document.createElement('i'); i.style.width = (v / maxC * 4) + 'rem'; const em = document.createElement('em'); em.textContent = fmt(v); wrap.append(i, em); cell.appendChild(wrap); } else cell.textContent = 'n/a';
   return [profile(r), cell, td('r m', day(r.updated_at))];
 }, 3);
 const pend = SYNCS.filter((r) => r.status === 'pending' || r.status === 'processing')
   .sort((a, b) => (a.status === 'processing' ? 0 : 1) - (b.status === 'processing' ? 0 : 1) || String(a.queued_at).localeCompare(String(b.queued_at)));
 fill('pend-rows', pend, (r) => { const cell = td(); const p = document.createElement('span'); p.className = 'pill' + (r.status === 'processing' ? ' proc' : ''); p.textContent = r.status; cell.appendChild(p); return [profile(r), cell, td('r m', day(r.queued_at))]; }, 3);
 const failed = SYNCS.filter((r) => r.status === 'failed').sort((a, b) => String(a.updated_at).localeCompare(String(b.updated_at)));
-fill('fail-rows', failed, (r) => [profile(r), td('m', r.failure || '—'), td('r m', day(r.updated_at))], 3);
+fill('fail-rows', failed, (r) => [profile(r), td('m', r.failure || 'n/a'), td('r m', day(r.updated_at))], 3);
 const other = SYNCS.filter((r) => !KNOWN.has(r.status)).sort((a, b) => String(a.updated_at).localeCompare(String(b.updated_at)));
 fill('other-rows', other, (r) => { const cell = td(); const p = document.createElement('span'); p.className = 'pill'; p.textContent = r.status; cell.appendChild(p); return [profile(r), cell, td('r m', day(r.updated_at))]; }, 3);
 </script>
